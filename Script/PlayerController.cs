@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Transform leftHandIk;
     [SerializeField] private Transform rightHandIk;
     [SerializeField] private GameObject log;
+    [SerializeField] private PlayableDirector pd;
 
 
     private float speed = 4f;
@@ -136,6 +139,10 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             log.SetActive(true);
             animator.SetBool(isLogId, true);
+        }
+        if (other.CompareTag("PlayTimeLine"))
+        {
+            pd.Play();
         }
     }
 

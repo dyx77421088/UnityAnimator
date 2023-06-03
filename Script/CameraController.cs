@@ -10,12 +10,14 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         py = transform.position - target.position;
+        //transform.position = target.position + py;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = target.position + target.TransformDirection(py);
+        //transform.position = target.position + py;
         transform.LookAt(target);
     }
 }
